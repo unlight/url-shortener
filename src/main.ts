@@ -6,6 +6,7 @@ import * as bodyParser from 'body-parser';
 
 async function main() {
     const app = await NestFactory.create(AppModule);
+    app.setGlobalPrefix('api');
     app.use(bodyParser.json({ strict: false }));
     await app.listen(config.get('port'));
 }

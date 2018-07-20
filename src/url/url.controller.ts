@@ -3,7 +3,7 @@ import { UrlService } from './url.service';
 import { Response } from 'express';
 import { Url } from './url.entity';
 
-@Controller()
+@Controller('url')
 export class UrlController {
 
     constructor(
@@ -11,18 +11,12 @@ export class UrlController {
         @Inject('converter') private readonly converter: any,
     ) { }
 
-    @Post('shorten')
-    async shorten(@Body() url: string) {
+    @Post()
+    async create(@Body() url: string) {
         // TODO: Add validation.
         const entity = await this.urlService.create(url);
         const hash = this.converter.encode(entity._id);
         return { hash, url };
-    }
-
-    @Get('test')
-    test() {
-        const url = new Url();
-        return url;
     }
 
     @Get(':hash')
