@@ -16,6 +16,6 @@ export class UrlService {
     }
 
     getById(id: number) {
-        return this.urlRepository.findOne(id);
+        return this.urlRepository.findOne({ where: { _id: id } });
     }
 }
