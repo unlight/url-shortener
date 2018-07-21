@@ -9,6 +9,7 @@ import { Url } from './url/url.entity';
     imports: [
         TypeOrmModule.forRoot({
             ...config.get('typeorm'),
+            forceServerObjectId: true,
             entities: ['./**/*.entity.ts'],
             subscribers: ['./**/*.subscriber.ts'],
         }),

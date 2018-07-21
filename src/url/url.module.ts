@@ -8,7 +8,7 @@ const convertBases = require('convert-bases');
 @Module({
     imports: [TypeOrmModule.forFeature([Url])],
     controllers: [UrlController],
-    components: [
+    providers: [
         UrlService,
         { provide: 'converter', useFactory: () => convertBases() },
     ],
